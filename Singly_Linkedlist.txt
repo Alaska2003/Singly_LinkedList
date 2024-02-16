@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstddef> // for NULL
+
+class Node {
+public:
+    int data;
+    Node *next;
+    
+    Node(int data) {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+void Insertathead(Node *&head, int data) {
+    Node *temp = new Node(data);
+    temp->next = head;
+    head = temp;
+}
+
+void print(Node* &head) {
+    Node *point = head;
+    while (point != NULL) {
+        std::cout << point->data << " ";
+        point = point->next;
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    Node* node1 = new Node(10);
+    Node *head = node1;
+    print(head);
+    
+    Insertathead(head, 12);
+    print(head);
+    
+    Insertathead(head, 15);
+    print(head);
+    
+    Insertathead(head, 16);
+    print(head);
+    
+    return 0;
+}                    														Output:
+10 
+12 10 
+15 12 10 
+16 15 12 10
